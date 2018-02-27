@@ -1,0 +1,30 @@
+{
+  "name": "JSQMessagesViewController",
+  "version": "7.3.5",
+  "summary": "An elegant messages UI library for iOS.",
+  "license": "MIT",
+  "platforms": {
+    "ios": "7.0"
+  },
+  "authors": "Jesse Squires",
+  "homepage": "https://github.com/jessesquires/",
+  "source": {
+    "git": "https://github.com/jessesquires/JSQMessagesViewController.git",
+    "tag": "7.3.5"
+  },
+  "source_files": "JSQMessagesViewController/**/*.{h,m}",
+  "resources": [
+    "JSQMessagesViewController/Assets/JSQMessagesAssets.bundle",
+    "JSQMessagesViewController/**/*.{xib}"
+  ],
+  "frameworks": [
+    "QuartzCore",
+    "CoreGraphics",
+    "CoreLocation",
+    "MapKit",
+    "MobileCoreServices",
+    "AVFoundation"
+  ],
+  "requires_arc": true,
+  "deprecated": true
+}

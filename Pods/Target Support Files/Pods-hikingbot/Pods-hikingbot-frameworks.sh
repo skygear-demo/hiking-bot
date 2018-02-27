@@ -134,37 +134,23 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/ALCameraViewController/ALCameraViewController.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/CTAssetsPickerController/CTAssetsPickerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/JSQMessagesViewController-Skygear/JSQMessagesViewController.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/LruCache/LruCache.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MagicKit-Skygear/MagicKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Realm/Realm.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SKYKit/SKYKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SKYKitChat/SKYKitChat.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/ALCameraViewController/ALCameraViewController.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/CTAssetsPickerController/CTAssetsPickerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/JSQMessagesViewController-Skygear/JSQMessagesViewController.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/LruCache/LruCache.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/MagicKit-Skygear/MagicKit.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/PureLayout/PureLayout.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Realm/Realm.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SKPhotoBrowser/SKPhotoBrowser.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SKYKit/SKYKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SKYKitChat/SKYKitChat.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SocketRocket/SocketRocket.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then

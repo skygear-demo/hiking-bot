@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0920"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "92C05F8958F0C32210BEB48A655F123E"
+               BlueprintIdentifier = "86FE0DAC5F2BC44F70F700EC53A175A8"
                BuildableName = "Pods_hikingbot.framework"
                BlueprintName = "Pods-hikingbot"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "92C05F8958F0C32210BEB48A655F123E"
+            BlueprintIdentifier = "86FE0DAC5F2BC44F70F700EC53A175A8"
             BuildableName = "Pods_hikingbot.framework"
             BlueprintName = "Pods-hikingbot"
             ReferencedContainer = "container:Pods.xcodeproj">

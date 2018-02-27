@@ -1,5 +1,5 @@
 use_frameworks!
-platform :ios, '10.3'
+platform :ios, '9.0'
 source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 
@@ -7,8 +7,8 @@ target 'hikingbot' do
   # Pods for hikingbot
   pod 'SKYKit'
   pod 'SKYKitChat', :path => './'
-  pod 'SKYKitChat/UI', :path => './'
   pod 'Kingfisher', '~> 4.0'
+  pod 'JSQMessagesViewController', :path => './'
 
 end
 

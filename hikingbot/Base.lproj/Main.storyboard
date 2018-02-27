@@ -156,7 +156,7 @@
         <!--ChatVC-->
         <scene sceneID="rff-98-OGV">
             <objects>
-                <viewController id="rzQ-ET-L58" customClass="ChatVC" customModule="hikingbot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatVC" id="rzQ-ET-L58" customClass="ChatVC" customModule="hikingbot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s00-nK-Hbu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,6 +174,22 @@
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="createConversation:" destination="rzQ-ET-L58" eventType="touchUpInside" id="WdX-QX-we8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tK-qa-jIl">
+                                <rect key="frame" x="133" y="220" width="109" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ChatBot"/>
+                                <connections>
+                                    <action selector="createChat:" destination="rzQ-ET-L58" eventType="touchUpInside" id="pgg-qp-aeT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUp-vc-Nvu">
+                                <rect key="frame" x="143" y="258" width="89" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign out"/>
+                                <connections>
+                                    <action selector="signOut:" destination="rzQ-ET-L58" eventType="touchUpInside" id="0Pg-RI-3GQ"/>
                                 </connections>
                             </button>
                         </subviews>
