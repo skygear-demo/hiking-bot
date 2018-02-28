@@ -16,11 +16,10 @@ class ChatViewController: JSQMessagesViewController {
     let defaults = UserDefaults.standard
     var incomingBubble: JSQMessagesBubbleImage!
     var outgoingBubble: JSQMessagesBubbleImage!
-    fileprivate var displayName: String!
     var fetchConversation: SKYConversation!
     var skykitMessages: [SKYMessage]!
     
-    // MARK: - Send, back, assisted Buttons
+    // MARK: - Send, back Buttons
     func setupBackButton() {
         let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
@@ -30,8 +29,9 @@ class ChatViewController: JSQMessagesViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    // MARK: - assisted Buttons
     @objc func receiveMessagePressed(_ sender: UIBarButtonItem) {
-        skyMessageToJSQMessage()
+        
     }
     
     // MARK: - SKYKitChat
@@ -62,12 +62,12 @@ class ChatViewController: JSQMessagesViewController {
     func loadingConversation(){
         SKYContainer.default().chatExtension?.fetchMessages(
             conversation: fetchConversation,
-            limit: 100,
+            limit: 20,
             beforeTime: nil,
             order: "created_at",
             completion: { (messages, _ ,error) in
                 if error != nil {
-                    let alert = UIAlertController(title: "Error on fetching the ,essages", message: "Do you want to try again?", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error on fetching the ,messages", message: "Do you want to try again?", preferredStyle: .alert)
                     
                     alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
                     alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
@@ -76,7 +76,7 @@ class ChatViewController: JSQMessagesViewController {
                     self.present(alert, animated: true)
                     return
                 }
-
+                
                 if let fetchedMessages = messages{
                     self.skykitMessages = fetchedMessages
                     self.skyMessageToJSQMessage()
@@ -118,10 +118,7 @@ class ChatViewController: JSQMessagesViewController {
             in: fetchConversation,
             handler: { (event, message) in
                 print("Received message event")
-                let message = JSQMessage(senderId: message.creatorUserRecordID(), senderDisplayName: "nil", date: message.creationDate(), text: message.body!)
-                self.messages.append(message)
-                self.finishSendingMessage(animated: true)
-                self.scrollToBottom(animated: true)
+                self.loadingConversation()
         })
     }
     
@@ -211,14 +208,14 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func addMedia(_ media:JSQMediaItem) {
-        let message = JSQMessage(senderId: self.senderId(), displayName: self.senderDisplayName(), media: media)
+        let message = JSQMessage(senderId: self.senderId(), displayName: "nil", media: media)
         self.messages.append(message)
         
         //Optional: play sent sound
         
         self.finishSendingMessage(animated: true)
     }
-
+    
     //MARK: JSQMessages CollectionView DataSource
     override func senderId() -> String {
         return (SKYContainer.default().auth.currentUser?.ownerUserRecordID)!
@@ -246,47 +243,8 @@ class ChatViewController: JSQMessagesViewController {
         return getAvatar(message.senderId)
     }
     
-    override func collectionView(_ collectionView: JSQMessagesCollectionView, attributedTextForCellTopLabelAt indexPath: IndexPath) -> NSAttributedString? {
-        /**
-         *  This logic should be consistent with what you return from `heightForCellTopLabelAtIndexPath:`
-         *  The other label text delegate methods should follow a similar pattern.
-         *
-         *  Show a timestamp for every 3rd message
-         */
-        if (indexPath.item % 3 == 0) {
-            let message = self.messages[indexPath.item]
-            
-            return JSQMessagesTimestampFormatter.shared().attributedTimestamp(for: message.date)
-        }
-        
-        return nil
-    }
-    
-    override func collectionView(_ collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath) -> NSAttributedString? {
-        // Force hide display name, Uncomment the code below to enable displaying name
-        return nil
-    }
-    
-    override func collectionView(_ collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellTopLabelAt indexPath: IndexPath) -> CGFloat {
-        /**
-         *  Each label in a cell has a `height` delegate method that corresponds to its text dataSource method
-         */
-        
-        /**
-         *  This logic should be consistent with what you return from `attributedTextForCellTopLabelAtIndexPath:`
-         *  The other label height delegate methods should follow similarly
-         *
-         *  Show a timestamp for every 3rd message
-         */
-        if indexPath.item % 5 == 0 {
-            return kJSQMessagesCollectionViewCellLabelHeightDefault
-        }
-        
-        return 0.0
-    }
-
     override func collectionView(_ collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForMessageBubbleTopLabelAt indexPath: IndexPath) -> CGFloat {
-        return 0.0;
+        return 10.0;
     }
     
     // MARK: - Lifecycle
@@ -298,6 +256,10 @@ class ChatViewController: JSQMessagesViewController {
         
         // Setup navigation
         setupBackButton()
+        
+        // customise input view
+        self.inputToolbar.contentView?.textView?.placeHolder = "Ask the bot question"
+        self.inputToolbar.contentView?.textView?.autocorrectionType = UITextAutocorrectionType.no
         
         // Scroll the chat to the bottom
         self.scrollToBottom(animated: true)
@@ -324,3 +286,4 @@ class ChatViewController: JSQMessagesViewController {
     }
     
 }
+

@@ -36,7 +36,7 @@ let AvatarIDUser = "71ad382e-e201-489e-812f-26717991102e"
 // Create an avatar with Image
 let AvatarBot = JSQMessagesAvatarImageFactory().avatarImage(withPlaceholder: UIImage(named:"avatar_bot")!)
 
-let AvatarUser = JSQMessagesAvatarImageFactory().avatarImage(withUserInitials: "SW", backgroundColor: UIColor.jsq_messageBubbleGreen(), textColor: UIColor.white, font: UIFont.systemFont(ofSize: 12))
+let AvatarUser = JSQMessagesAvatarImageFactory().avatarImage(withPlaceholder: UIImage(named:"demo_avatar_jobs")!)
 
 // Helper Method for getting an avatar for a specific User.
 func getAvatar(_ id: String) -> JSQMessagesAvatarImage{
