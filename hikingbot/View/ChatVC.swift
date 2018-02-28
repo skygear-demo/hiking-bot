@@ -34,7 +34,6 @@ class ChatVC: UIViewController {
     
     @IBAction func createChat(_ sender: Any) {
         let chatView = ChatViewController()
-        //chatView.messages = makeNormalConversation()
         let chatNavigationController = UINavigationController(rootViewController: chatView)
         present(chatNavigationController, animated: true, completion: nil)
     }

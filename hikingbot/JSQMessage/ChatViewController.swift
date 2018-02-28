@@ -20,7 +20,7 @@ class ChatViewController: JSQMessagesViewController {
     var fetchConversation: SKYConversation!
     var skykitMessages: [SKYMessage]!
     
-     // MARK: Send, back, assisted Buttons
+    // MARK: - Send, back, assisted Buttons
     func setupBackButton() {
         let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
@@ -34,7 +34,7 @@ class ChatViewController: JSQMessagesViewController {
         skyMessageToJSQMessage()
     }
     
-    // MARK: SKYKitChat
+    // MARK: - SKYKitChat
     func fetchChatrecord(){
         SKYContainer.default().chatExtension?.fetchConversations(
             fetchLastMessage: false,
@@ -125,7 +125,7 @@ class ChatViewController: JSQMessagesViewController {
         })
     }
     
-    // MARK: JSQMessagesViewController method overrides
+    // MARK: - JSQMessagesViewController method overrides
     override func didPressSend(_ button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: Date) {
         sendChat(text: text)
         self.finishSendingMessage(animated: true)
@@ -289,7 +289,7 @@ class ChatViewController: JSQMessagesViewController {
         return 0.0;
     }
     
-    // MARK: Lifecycle
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
