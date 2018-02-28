@@ -18,7 +18,7 @@ class ChatVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //print(SKYContainer.default().auth.currentUser?.ownerUserRecordID)
     }
     
     // MARK: - Actions
@@ -34,14 +34,14 @@ class ChatVC: UIViewController {
     
     @IBAction func createChat(_ sender: Any) {
         let chatView = ChatViewController()
-        chatView.messages = makeNormalConversation()
+        //chatView.messages = makeNormalConversation()
         let chatNavigationController = UINavigationController(rootViewController: chatView)
         present(chatNavigationController, animated: true, completion: nil)
     }
     
     @IBAction func createConversation(_ sender: Any) {
-        /*if let id = userIdTextField.text, !id.isEmpty {
-            SKYContainer.default().chatExtension?.createDirectConversation(userID: id, title: "Chat with \(id)", metadata: nil) { (conversation, error) in
+        if let id = userIdTextField.text, !id.isEmpty {
+            SKYContainer.default().chatExtension?.createDirectConversation(userID: id, title: "Chat with bot", metadata: nil) { (conversation, error) in
                 if let err = error {
                     let alert = UIAlertController(title: "Unable to create direct conversation", message: err.localizedDescription, preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
@@ -50,7 +50,7 @@ class ChatVC: UIViewController {
                 }
                 print("The id is \(conversation?.recordID().canonicalString ?? "null")")
             }
-        }*/
+        }
     }
 
 }

@@ -8,207 +8,126 @@
 
 import UIKit
 import JSQMessagesViewController
+import SKYKitChat
+import SKYKit
 
 class ChatViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
     let defaults = UserDefaults.standard
-    var conversation: Conversation?
     var incomingBubble: JSQMessagesBubbleImage!
     var outgoingBubble: JSQMessagesBubbleImage!
     fileprivate var displayName: String!
-    // *#* Control displaying name, avatar and bubble tails
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Setup navigation
-        self.scrollToBottom(animated: true)
-        
-        // *#* Bubbles with tails
-        incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
-        outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.lightGray)
-        
-
-        // *#* showing Avatars
-        collectionView?.collectionViewLayout.incomingAvatarViewSize = CGSize(width: kJSQMessagesCollectionViewAvatarSizeDefault, height:kJSQMessagesCollectionViewAvatarSizeDefault )
-        collectionView?.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: kJSQMessagesCollectionViewAvatarSizeDefault, height:kJSQMessagesCollectionViewAvatarSizeDefault )
-        
-        // Show Button to simulate incoming messages
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.jsq_defaultTypingIndicator(), style: .plain, target: self, action: #selector(receiveMessagePressed))
-        
-        // This is a beta feature that mostly works but to make things more stable it is diabled.
-        collectionView?.collectionViewLayout.springinessEnabled = false
-        
-        automaticallyScrollsToMostRecentMessage = true
-
-        self.collectionView?.reloadData()
-        self.collectionView?.layoutIfNeeded()
-    }
+    var fetchConversation: SKYConversation!
+    var skykitMessages: [SKYMessage]!
     
+     // MARK: Send, back, assisted Buttons
     func setupBackButton() {
         let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
     }
+    
     @objc func backButtonTapped() {
         dismiss(animated: true, completion: nil)
     }
     
     @objc func receiveMessagePressed(_ sender: UIBarButtonItem) {
-        /**
-         *  DEMO ONLY
-         *
-         *  The following is simply to simulate received messages for the demo.
-         *  Do not actually do this.
-         */
-        
-        /**
-         *  Show the typing indicator to be shown
-         */
-        self.showTypingIndicator = !self.showTypingIndicator
-        
-        /**
-         *  Scroll to actually view the indicator
-         */
-        self.scrollToBottom(animated: true)
-        
-        /**
-         *  Copy last sent message, this will be the new "received" message
-         */
-        var copyMessage = self.messages.last?.copy()
-        
-        if (copyMessage == nil) {
-            copyMessage = JSQMessage(senderId: AvatarIDBot, displayName: getName(User.Bot), text: "First received!")
-        }
-            
-        var newMessage:JSQMessage!
-        var newMediaData:JSQMessageMediaData!
-        var newMediaAttachmentCopy:AnyObject?
-        
-        if (copyMessage! as AnyObject).isMediaMessage() {
-            /**
-             *  Last message was a media message
-             */
-            let copyMediaData = (copyMessage! as AnyObject).media
-            
-            switch copyMediaData {
-            case is JSQPhotoMediaItem:
-                let photoItemCopy = (copyMediaData as! JSQPhotoMediaItem).copy() as! JSQPhotoMediaItem
-                photoItemCopy.appliesMediaViewMaskAsOutgoing = false
-                
-                newMediaAttachmentCopy = UIImage(cgImage: photoItemCopy.image!.cgImage!)
-                
-                /**
-                 *  Set image to nil to simulate "downloading" the image
-                 *  and show the placeholder view5017
-                 */
-                photoItemCopy.image = nil;
-                
-                newMediaData = photoItemCopy
-            case is JSQLocationMediaItem:
-                let locationItemCopy = (copyMediaData as! JSQLocationMediaItem).copy() as! JSQLocationMediaItem
-                locationItemCopy.appliesMediaViewMaskAsOutgoing = false
-                newMediaAttachmentCopy = locationItemCopy.location!.copy() as AnyObject?
-                
-                /**
-                 *  Set location to nil to simulate "downloading" the location data
-                 */
-                locationItemCopy.location = nil;
-                
-                newMediaData = locationItemCopy;
-            case is JSQVideoMediaItem:
-                let videoItemCopy = (copyMediaData as! JSQVideoMediaItem).copy() as! JSQVideoMediaItem
-                videoItemCopy.appliesMediaViewMaskAsOutgoing = false
-                newMediaAttachmentCopy = (videoItemCopy.fileURL! as NSURL).copy() as AnyObject?
-                
-                /**
-                 *  Reset video item to simulate "downloading" the video
-                 */
-                videoItemCopy.fileURL = nil;
-                videoItemCopy.isReadyToPlay = false;
-                
-                newMediaData = videoItemCopy;
-            case is JSQAudioMediaItem:
-                let audioItemCopy = (copyMediaData as! JSQAudioMediaItem).copy() as! JSQAudioMediaItem
-                audioItemCopy.appliesMediaViewMaskAsOutgoing = false
-                newMediaAttachmentCopy = (audioItemCopy.audioData! as NSData).copy() as AnyObject?
-                
-                /**
-                 *  Reset audio item to simulate "downloading" the audio
-                 */
-                audioItemCopy.audioData = nil;
-                
-                newMediaData = audioItemCopy;
-            default:
-                assertionFailure("Error: This Media type was not recognised")
-            }
-            
-            newMessage = JSQMessage(senderId: AvatarIDBot, displayName: getName(User.Bot), media: newMediaData)
-        }
-        else {
-            /**
-             *  Last message was a text message
-             */
-            
-            newMessage = JSQMessage(senderId: AvatarIDBot, displayName: getName(User.Bot), text: (copyMessage! as AnyObject).text)
-        }
-        
-        /**
-         *  Upon receiving a message, you should:
-         *
-         *  1. Play sound (optional)
-         *  2. Add new JSQMessageData object to your data source
-         *  3. Call `finishReceivingMessage`
-         */
-        
-        self.messages.append(newMessage)
-        self.finishReceivingMessage(animated: true)
-        
-        if newMessage.isMediaMessage {
-            /**
-             *  Simulate "downloading" media
-             */
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)) {
-                /**
-                 *  Media is "finished downloading", re-display visible cells
-                 *
-                 *  If media cell is not visible, the next time it is dequeued the view controller will display its new attachment data
-                 *
-                 *  Reload the specific item, or simply call `reloadData`
-                 */
-                
-                switch newMediaData {
-                case is JSQPhotoMediaItem:
-                    (newMediaData as! JSQPhotoMediaItem).image = newMediaAttachmentCopy as? UIImage
-                    self.collectionView!.reloadData()
-                case is JSQLocationMediaItem:
-                    (newMediaData as! JSQLocationMediaItem).setLocation(newMediaAttachmentCopy as? CLLocation, withCompletionHandler: {
-                        self.collectionView!.reloadData()
-                    })
-                case is JSQVideoMediaItem:
-                    (newMediaData as! JSQVideoMediaItem).fileURL = newMediaAttachmentCopy as? URL
-                    (newMediaData as! JSQVideoMediaItem).isReadyToPlay = true
-                    self.collectionView!.reloadData()
-                case is JSQAudioMediaItem:
-                    (newMediaData as! JSQAudioMediaItem).audioData = newMediaAttachmentCopy as? Data
-                    self.collectionView!.reloadData()
-                default:
-                    assertionFailure("Error: This Media type was not recognised")
+        skyMessageToJSQMessage()
+    }
+    
+    // MARK: SKYKitChat
+    func fetchChatrecord(){
+        SKYContainer.default().chatExtension?.fetchConversations(
+            fetchLastMessage: false,
+            completion: { (conversations, error) in
+                if let _ = error {
+                    let alert = UIAlertController(title: "Error on fetching the conversations", message: "Do you want to try again?", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                        self.fetchChatrecord()
+                    }))
+                    self.present(alert, animated: true)
+                    return
                 }
-            }
+                
+                if let fetchedConversations = conversations {
+                    self.fetchConversation = fetchedConversations[0]
+                    print("Fetched \(fetchedConversations.count) conversations.")
+                    self.loadingConversation()
+                    self.subscribeNewMessages()
+                }
+        })
+    }
+    
+    func loadingConversation(){
+        SKYContainer.default().chatExtension?.fetchMessages(
+            conversation: fetchConversation,
+            limit: 100,
+            beforeTime: nil,
+            order: "created_at",
+            completion: { (messages, _ ,error) in
+                if error != nil {
+                    let alert = UIAlertController(title: "Error on fetching the ,essages", message: "Do you want to try again?", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                        self.loadingConversation()
+                    }))
+                    self.present(alert, animated: true)
+                    return
+                }
+
+                if let fetchedMessages = messages{
+                    self.skykitMessages = fetchedMessages
+                    self.skyMessageToJSQMessage()
+                    print ("Messages fetched")
+                }
+        })
+    }
+    
+    func sendChat(text: String){
+        let message = SKYMessage()
+        message.body = text
+        
+        SKYContainer.default().chatExtension?.addMessage(message,
+                                                         to: fetchConversation) { (message, error) in
+                                                            if let err = error {
+                                                                print("Send message error: \(err.localizedDescription)")
+                                                                return
+                                                            }
+                                                            
+                                                            if message != nil {
+                                                                print("Send message successful")
+                                                            }
         }
+    }
+    
+    func skyMessageToJSQMessage(){
+        messages = [JSQMessage]()
+        for skykitMessage in skykitMessages{
+            let message = JSQMessage(senderId: skykitMessage.creatorUserRecordID(), senderDisplayName: "nil", date: skykitMessage.creationDate(), text: skykitMessage.body!)
+            messages.append(message)
+        }
+        messages.reverse()
+        self.finishSendingMessage(animated: true)
+        self.scrollToBottom(animated: true)
+    }
+    
+    func subscribeNewMessages(){
+        SKYContainer.default().chatExtension?.subscribeToMessages(
+            in: fetchConversation,
+            handler: { (event, message) in
+                print("Received message event")
+                let message = JSQMessage(senderId: message.creatorUserRecordID(), senderDisplayName: "nil", date: message.creationDate(), text: message.body!)
+                self.messages.append(message)
+                self.finishSendingMessage(animated: true)
+                self.scrollToBottom(animated: true)
+        })
     }
     
     // MARK: JSQMessagesViewController method overrides
     override func didPressSend(_ button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: Date) {
-        /**
-         *  Sending a message. Your implementation of this method should do *at least* the following:
-         *
-         *  1. Play sound (optional)
-         *  2. Add new id<JSQMessageData> object to your data source
-         *  3. Call `finishSendingMessage`
-         */
-        
-        let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
-        self.messages.append(message)
+        sendChat(text: text)
         self.finishSendingMessage(animated: true)
     }
     
@@ -299,12 +218,10 @@ class ChatViewController: JSQMessagesViewController {
         
         self.finishSendingMessage(animated: true)
     }
-    
-    
+
     //MARK: JSQMessages CollectionView DataSource
-    
     override func senderId() -> String {
-        return User.User.rawValue
+        return (SKYContainer.default().auth.currentUser?.ownerUserRecordID)!
     }
     
     override func senderDisplayName() -> String {
@@ -346,28 +263,8 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath) -> NSAttributedString? {
-
-        // Displaying names above messages
-        //Mark: Removing Sender Display Name
-        /**
-         *  Example on showing or removing senderDisplayName based on user settings.
-         *  This logic should be consistent with what you return from `heightForCellTopLabelAtIndexPath:`
-         */
-        
-        // *#*Force hide display name, Uncomment the code below to enable displaying name
+        // Force hide display name, Uncomment the code below to enable displaying name
         return nil
-        
-        /*
-        let message = messages[indexPath.item]
-        if defaults.bool(forKey: Setting.removeSenderDisplayName.rawValue) {
-            return nil
-        }
-        
-        if message.senderId == self.senderId() {
-            return nil
-        }
-
-        return NSAttributedString(string: message.senderDisplayName)*/
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForCellTopLabelAt indexPath: IndexPath) -> CGFloat {
@@ -381,7 +278,7 @@ class ChatViewController: JSQMessagesViewController {
          *
          *  Show a timestamp for every 3rd message
          */
-        if indexPath.item % 3 == 0 {
+        if indexPath.item % 5 == 0 {
             return kJSQMessagesCollectionViewCellLabelHeightDefault
         }
         
@@ -389,32 +286,41 @@ class ChatViewController: JSQMessagesViewController {
     }
 
     override func collectionView(_ collectionView: JSQMessagesCollectionView, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout, heightForMessageBubbleTopLabelAt indexPath: IndexPath) -> CGFloat {
+        return 0.0;
+    }
+    
+    // MARK: Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        /**
-         *  Example on showing or removing senderDisplayName based on user settings.
-         *  This logic should be consistent with what you return from `attributedTextForCellTopLabelAtIndexPath:`
-         */
-        if defaults.bool(forKey: Setting.removeSenderDisplayName.rawValue) {
-            return 0.0
-        }
+        // Load Skygear Chat
+        fetchChatrecord()
         
-        /**
-         *  iOS7-style sender name labels
-         */
-        let currentMessage = self.messages[indexPath.item]
+        // Setup navigation
+        setupBackButton()
         
-        if currentMessage.senderId == self.senderId() {
-            return 0.0
-        }
+        // Scroll the chat to the bottom
+        self.scrollToBottom(animated: true)
         
-        if indexPath.item - 1 > 0 {
-            let previousMessage = self.messages[indexPath.item - 1]
-            if previousMessage.senderId == currentMessage.senderId {
-                return 0.0
-            }
-        }
+        // Bubbles with tails
+        incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
+        outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.lightGray)
         
-        return kJSQMessagesCollectionViewCellLabelHeightDefault;
+        
+        // Showing Avatars
+        collectionView?.collectionViewLayout.incomingAvatarViewSize = CGSize(width: kJSQMessagesCollectionViewAvatarSizeDefault, height:kJSQMessagesCollectionViewAvatarSizeDefault )
+        collectionView?.collectionViewLayout.outgoingAvatarViewSize = CGSize(width: kJSQMessagesCollectionViewAvatarSizeDefault, height:kJSQMessagesCollectionViewAvatarSizeDefault )
+        
+        // Show Button to simulate incoming messages
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage.jsq_defaultTypingIndicator(), style: .plain, target: self, action: #selector(receiveMessagePressed))
+        
+        // This is a beta feature that mostly works but to make things more stable it is diabled.
+        collectionView?.collectionViewLayout.springinessEnabled = false
+        
+        automaticallyScrollsToMostRecentMessage = true
+        
+        self.collectionView?.reloadData()
+        self.collectionView?.layoutIfNeeded()
     }
     
 }
