@@ -192,12 +192,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="q6N-Nk-uSb">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="T6O-Dp-BU9"/>
                     </view>
                     <navigationItem key="navigationItem" id="xYa-AQ-qQV"/>
                     <connections>
+                        <outlet property="loadingView" destination="q6N-Nk-uSb" id="2TD-ON-3jX"/>
                         <outlet property="userIdTextField" destination="LQD-vJ-4oL" id="376-Mm-PkS"/>
                     </connections>
                 </viewController>

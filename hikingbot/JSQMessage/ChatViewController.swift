@@ -35,30 +35,6 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     // MARK: - SKYKitChat
-    func fetchChatrecord(){
-        SKYContainer.default().chatExtension?.fetchConversations(
-            fetchLastMessage: false,
-            completion: { (conversations, error) in
-                if let _ = error {
-                    let alert = UIAlertController(title: "Error on fetching the conversations", message: "Do you want to try again?", preferredStyle: .alert)
-                    
-                    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
-                    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-                        self.fetchChatrecord()
-                    }))
-                    self.present(alert, animated: true)
-                    return
-                }
-                
-                if let fetchedConversations = conversations {
-                    self.fetchConversation = fetchedConversations[0]
-                    print("Fetched \(fetchedConversations.count) conversations.")
-                    self.loadingConversation()
-                    self.subscribeNewMessages()
-                }
-        })
-    }
-    
     func loadingConversation(){
         SKYContainer.default().chatExtension?.fetchMessages(
             conversation: fetchConversation,
@@ -110,7 +86,6 @@ class ChatViewController: JSQMessagesViewController {
         }
         messages.reverse()
         self.finishSendingMessage(animated: true)
-        self.scrollToBottom(animated: true)
     }
     
     func subscribeNewMessages(){
@@ -247,12 +222,30 @@ class ChatViewController: JSQMessagesViewController {
         return 10.0;
     }
     
+    // MARK: - Override
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // Customization of the chat bubble.
+        let cell : JSQMessagesCollectionViewCell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        
+        let msg = self.messages[indexPath.row]
+        if(msg.senderId == self.senderId()){
+            cell.textView?.textColor = UIColor.white //change this color for your messages
+        }else{
+            cell.textView?.textColor = UIColor.white //change this color for other people message
+        }
+       // cell.textView?.linkTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue : UIColor.blue] //this is the color of the links
+        
+        return cell
+    }
+
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Load Skygear Chat
-        fetchChatrecord()
+        self.loadingConversation()
+        self.subscribeNewMessages()
         
         // Setup navigation
         setupBackButton()

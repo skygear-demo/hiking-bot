@@ -12,8 +12,8 @@ import SKYKitChat
 
 // User Enum to make it easyier to work with.
 enum User: String {
-    case Bot    = "67785199-677e-4f63-8d0d-888eae2971d7"
-    case User    = "71ad382e-e201-489e-812f-26717991102e"
+    case Bot = "67785199-677e-4f63-8d0d-888eae2971d7"
+    case User = "71ad382e-e201-489e-812f-26717991102e"
 }
 
 // Helper Function to get usernames for a secific User.

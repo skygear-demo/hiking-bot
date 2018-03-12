@@ -12,10 +12,9 @@ import SKYKit
 class ChatVC: UIViewController {
     
     @IBOutlet var userIdTextField: UITextField!
-    
+    @IBOutlet var loadingView: UIActivityIndicatorView!
     
     // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //print(SKYContainer.default().auth.currentUser?.ownerUserRecordID)
@@ -33,9 +32,7 @@ class ChatVC: UIViewController {
     }
     
     @IBAction func createChat(_ sender: Any) {
-        let chatView = ChatViewController()
-        let chatNavigationController = UINavigationController(rootViewController: chatView)
-        present(chatNavigationController, animated: true, completion: nil)
+        fetchChatrecord()
     }
     
     @IBAction func createConversation(_ sender: Any) {
@@ -52,5 +49,32 @@ class ChatVC: UIViewController {
         }
     }
     
+    // MARK: - Functions
+    func fetchChatrecord(){
+        self.loadingView.startAnimating()
+        SKYContainer.default().chatExtension?.fetchConversations(
+            fetchLastMessage: false,
+            completion: { (conversations, error) in
+                if let _ = error {
+                    let alert = UIAlertController(title: "Error on fetching the conversations", message: "Do you want to try again?", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+                    alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                        self.fetchChatrecord()
+                    }))
+                    self.present(alert, animated: true)
+                    self.loadingView.stopAnimating()
+                    return
+                }
+                
+                if let fetchedConversations = conversations {
+                    let chatView = ChatViewController()
+                    chatView.fetchConversation = fetchedConversations[0]
+                    let chatNavigationController = UINavigationController(rootViewController: chatView)
+                    self.present(chatNavigationController, animated: true, completion: nil)
+                    self.loadingView.stopAnimating()
+                }
+        })
+    }
 }
 

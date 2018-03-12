@@ -11,6 +11,7 @@
 		6B17C725204501F300A0DB3E /* DemoConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B17C724204501F300A0DB3E /* DemoConversation.swift */; };
 		6B17C72C20450AD200A0DB3E /* jsq_messages_sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6B17C72B20450A5B00A0DB3E /* jsq_messages_sample.m4a */; };
 		6B2EB94E2029D42400C926C0 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2EB94D2029D42400C926C0 /* LoginVC.swift */; };
+		6B40D016204FA6BE00473734 /* CustomiseJSQMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B40D015204FA6BE00473734 /* CustomiseJSQMessage.swift */; };
 		6B9B4651202B5D9E0042FE63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B4650202B5D9E0042FE63 /* ViewController.swift */; };
 		6B9B4653202C8B0B0042FE63 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B4652202C8B0B0042FE63 /* ChatVC.swift */; };
 		6BBB67B3792066078539B736 /* Pods_hikingbot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D9226FB10D826B5660E0BA /* Pods_hikingbot.framework */; };
@@ -27,6 +28,7 @@
 		6B17C724204501F300A0DB3E /* DemoConversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoConversation.swift; sourceTree = "<group>"; };
 		6B17C72B20450A5B00A0DB3E /* jsq_messages_sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = jsq_messages_sample.m4a; path = hikingbot/Resources/jsq_messages_sample.m4a; sourceTree = SOURCE_ROOT; };
 		6B2EB94D2029D42400C926C0 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		6B40D015204FA6BE00473734 /* CustomiseJSQMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomiseJSQMessage.swift; sourceTree = "<group>"; };
 		6B9B4650202B5D9E0042FE63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6B9B4652202C8B0B0042FE63 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		6BF38A6F20296B780063BEB8 /* hikingbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hikingbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				6B17C724204501F300A0DB3E /* DemoConversation.swift */,
+				6B40D015204FA6BE00473734 /* CustomiseJSQMessage.swift */,
 				6B17C7202045012200A0DB3E /* ChatViewController.swift */,
 			);
 			path = JSQMessage;
@@ -281,6 +284,7 @@
 				6B17C7222045012200A0DB3E /* ChatViewController.swift in Sources */,
 				6B9B4651202B5D9E0042FE63 /* ViewController.swift in Sources */,
 				6B9B4653202C8B0B0042FE63 /* ChatVC.swift in Sources */,
+				6B40D016204FA6BE00473734 /* CustomiseJSQMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
