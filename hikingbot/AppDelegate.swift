@@ -8,7 +8,6 @@
 
 import UIKit
 import SKYKit
-import SKYKitChat
 import ApiAI
 
 @UIApplicationMain
