@@ -153,57 +153,43 @@
             </objects>
             <point key="canvasLocation" x="-882" y="-45"/>
         </scene>
-        <!--ChatVC-->
+        <!--Home-->
         <scene sceneID="rff-98-OGV">
             <objects>
-                <viewController storyboardIdentifier="ChatVC" id="rzQ-ET-L58" customClass="ChatVC" customModule="hikingbot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatVC" title="Home" id="rzQ-ET-L58" customClass="ChatVC" customModule="hikingbot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s00-nK-Hbu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcT-Sr-fbH">
-                                <rect key="frame" x="164" y="154" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="createConversation:" destination="rzQ-ET-L58" eventType="touchUpInside" id="WdX-QX-we8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tK-qa-jIl">
-                                <rect key="frame" x="133" y="220" width="109" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="ChatBot"/>
-                                <connections>
-                                    <action selector="createChat:" destination="rzQ-ET-L58" eventType="touchUpInside" id="pgg-qp-aeT"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUp-vc-Nvu">
-                                <rect key="frame" x="143" y="258" width="89" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sign out"/>
-                                <connections>
-                                    <action selector="signOut:" destination="rzQ-ET-L58" eventType="touchUpInside" id="0Pg-RI-3GQ"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="67785199-677e-4f63-8d0d-888eae2971d7" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LQD-vJ-4oL">
-                                <rect key="frame" x="47" y="101" width="281" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="q6N-Nk-uSb">
                                 <rect key="frame" x="177" y="323" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rUp-vc-Nvu" customClass="RoundButton" customModule="hikingbot" customModuleProvider="target">
+                                <rect key="frame" x="133" y="589" width="89" height="58"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign out">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signOut:" destination="rzQ-ET-L58" eventType="touchUpInside" id="0Pg-RI-3GQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tK-qa-jIl">
+                                <rect key="frame" x="0.0" y="64" width="375" height="231"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="ChatBot" image="chatbot"/>
+                                <connections>
+                                    <action selector="createChat:" destination="rzQ-ET-L58" eventType="touchUpInside" id="pgg-qp-aeT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="T6O-Dp-BU9"/>
                     </view>
-                    <navigationItem key="navigationItem" id="xYa-AQ-qQV"/>
+                    <navigationItem key="navigationItem" title="Home" id="xYa-AQ-qQV"/>
                     <connections>
                         <outlet property="loadingView" destination="q6N-Nk-uSb" id="2TD-ON-3jX"/>
-                        <outlet property="userIdTextField" destination="LQD-vJ-4oL" id="376-Mm-PkS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z02-c8-bYs" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,5 +200,6 @@
     <resources>
         <image name="Textfield_Email" width="1720" height="186"/>
         <image name="Textfield_Passwordl" width="1720" height="186"/>
+        <image name="chatbot" width="738" height="415"/>
     </resources>
 </document>

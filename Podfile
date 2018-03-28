@@ -8,7 +8,9 @@ target 'hikingbot' do
   pod 'SKYKit'
   pod 'SKYKitChat', :path => './'
   pod 'Kingfisher', '~> 4.0'
-  pod 'JSQMessagesViewController', :path => './'
+  pod 'JSQMessagesViewController'
+  pod 'ApiAI'
+  pod 'Alamofire'
 
 end
 

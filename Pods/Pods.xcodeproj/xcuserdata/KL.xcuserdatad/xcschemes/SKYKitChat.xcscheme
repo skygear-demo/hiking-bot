@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F24AC8DCD2A8C0C44CC2C9FF9482F142"
+               BlueprintIdentifier = "394A478BB53FACD9FA1BE0CF3FD89CFC"
                BuildableName = "SKYKitChat.framework"
                BlueprintName = "SKYKitChat"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F24AC8DCD2A8C0C44CC2C9FF9482F142"
+            BlueprintIdentifier = "394A478BB53FACD9FA1BE0CF3FD89CFC"
             BuildableName = "SKYKitChat.framework"
             BlueprintName = "SKYKitChat"
             ReferencedContainer = "container:Pods.xcodeproj">

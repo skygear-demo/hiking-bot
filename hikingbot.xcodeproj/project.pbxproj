@@ -7,36 +7,40 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B17C7222045012200A0DB3E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B17C7202045012200A0DB3E /* ChatViewController.swift */; };
-		6B17C725204501F300A0DB3E /* DemoConversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B17C724204501F300A0DB3E /* DemoConversation.swift */; };
-		6B17C72C20450AD200A0DB3E /* jsq_messages_sample.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 6B17C72B20450A5B00A0DB3E /* jsq_messages_sample.m4a */; };
 		6B2EB94E2029D42400C926C0 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2EB94D2029D42400C926C0 /* LoginVC.swift */; };
-		6B40D016204FA6BE00473734 /* CustomiseJSQMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B40D015204FA6BE00473734 /* CustomiseJSQMessage.swift */; };
+		6B681D4F2067E2B30035603A /* DLchatbotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D4E2067E2B20035603A /* DLchatbotViewController.swift */; };
+		6B681D512067E33C0035603A /* NLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D502067E33B0035603A /* NLP.swift */; };
+		6B681D532067E41D0035603A /* GoogleTranslateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D522067E41D0035603A /* GoogleTranslateAPI.swift */; };
+		6B681D552067E6870035603A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D542067E6870035603A /* RoundButton.swift */; };
 		6B9B4651202B5D9E0042FE63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B4650202B5D9E0042FE63 /* ViewController.swift */; };
 		6B9B4653202C8B0B0042FE63 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B4652202C8B0B0042FE63 /* ChatVC.swift */; };
 		6BBB67B3792066078539B736 /* Pods_hikingbot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D9226FB10D826B5660E0BA /* Pods_hikingbot.framework */; };
+		6BCF66B0206B240100A50424 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF66AF206B240100A50424 /* IntentHandler.swift */; };
 		6BF38A7320296B780063BEB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38A7220296B780063BEB8 /* AppDelegate.swift */; };
 		6BF38A7820296B780063BEB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF38A7620296B780063BEB8 /* Main.storyboard */; };
 		6BF38A7A20296B780063BEB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BF38A7920296B780063BEB8 /* Assets.xcassets */; };
 		6BF38A7D20296B780063BEB8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF38A7B20296B780063BEB8 /* LaunchScreen.storyboard */; };
+		6BFF05CA206159A2002A0319 /* avatar_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 6BFF05C9206159A2002A0319 /* avatar_user.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		12D9226FB10D826B5660E0BA /* Pods_hikingbot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hikingbot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32E64464941697EEE0F0BB52 /* Pods-hikingbot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hikingbot.release.xcconfig"; path = "Pods/Target Support Files/Pods-hikingbot/Pods-hikingbot.release.xcconfig"; sourceTree = "<group>"; };
-		6B17C7202045012200A0DB3E /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		6B17C724204501F300A0DB3E /* DemoConversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoConversation.swift; sourceTree = "<group>"; };
-		6B17C72B20450A5B00A0DB3E /* jsq_messages_sample.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = jsq_messages_sample.m4a; path = hikingbot/Resources/jsq_messages_sample.m4a; sourceTree = SOURCE_ROOT; };
 		6B2EB94D2029D42400C926C0 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		6B40D015204FA6BE00473734 /* CustomiseJSQMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomiseJSQMessage.swift; sourceTree = "<group>"; };
+		6B681D4E2067E2B20035603A /* DLchatbotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLchatbotViewController.swift; sourceTree = "<group>"; };
+		6B681D502067E33B0035603A /* NLP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLP.swift; sourceTree = "<group>"; };
+		6B681D522067E41D0035603A /* GoogleTranslateAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleTranslateAPI.swift; sourceTree = "<group>"; };
+		6B681D542067E6870035603A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		6B9B4650202B5D9E0042FE63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6B9B4652202C8B0B0042FE63 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		6BCF66AF206B240100A50424 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		6BF38A6F20296B780063BEB8 /* hikingbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hikingbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF38A7220296B780063BEB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BF38A7720296B780063BEB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6BF38A7920296B780063BEB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6BF38A7C20296B780063BEB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6BF38A7E20296B780063BEB8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BFF05C9206159A2002A0319 /* avatar_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar_user.png; sourceTree = "<group>"; };
 		7FC5EDCC2550ACCB89F7B918 /* Pods-hikingbot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hikingbot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hikingbot/Pods-hikingbot.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,9 +68,11 @@
 		6B17C71F2045012200A0DB3E /* JSQMessage */ = {
 			isa = PBXGroup;
 			children = (
-				6B17C724204501F300A0DB3E /* DemoConversation.swift */,
-				6B40D015204FA6BE00473734 /* CustomiseJSQMessage.swift */,
-				6B17C7202045012200A0DB3E /* ChatViewController.swift */,
+				6B681D522067E41D0035603A /* GoogleTranslateAPI.swift */,
+				6B681D542067E6870035603A /* RoundButton.swift */,
+				6B681D502067E33B0035603A /* NLP.swift */,
+				6B681D4E2067E2B20035603A /* DLchatbotViewController.swift */,
+				6BCF66AF206B240100A50424 /* IntentHandler.swift */,
 			);
 			path = JSQMessage;
 			sourceTree = "<group>";
@@ -74,7 +80,7 @@
 		6B2EB94B2029D35100C926C0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6B17C72B20450A5B00A0DB3E /* jsq_messages_sample.m4a */,
+				6BFF05C9206159A2002A0319 /* avatar_user.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -193,7 +199,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B17C72C20450AD200A0DB3E /* jsq_messages_sample.m4a in Resources */,
+				6BFF05CA206159A2002A0319 /* avatar_user.png in Resources */,
 				6BF38A7D20296B780063BEB8 /* LaunchScreen.storyboard in Resources */,
 				6BF38A7A20296B780063BEB8 /* Assets.xcassets in Resources */,
 				6BF38A7820296B780063BEB8 /* Main.storyboard in Resources */,
@@ -210,8 +216,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-hikingbot/Pods-hikingbot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ApiAI/ApiAI.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MagicKit-Skygear/MagicKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
@@ -221,8 +230,11 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ApiAI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MagicKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
@@ -278,13 +290,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B681D552067E6870035603A /* RoundButton.swift in Sources */,
+				6B681D532067E41D0035603A /* GoogleTranslateAPI.swift in Sources */,
 				6BF38A7320296B780063BEB8 /* AppDelegate.swift in Sources */,
-				6B17C725204501F300A0DB3E /* DemoConversation.swift in Sources */,
+				6B681D512067E33C0035603A /* NLP.swift in Sources */,
 				6B2EB94E2029D42400C926C0 /* LoginVC.swift in Sources */,
-				6B17C7222045012200A0DB3E /* ChatViewController.swift in Sources */,
+				6BCF66B0206B240100A50424 /* IntentHandler.swift in Sources */,
 				6B9B4651202B5D9E0042FE63 /* ViewController.swift in Sources */,
+				6B681D4F2067E2B30035603A /* DLchatbotViewController.swift in Sources */,
 				6B9B4653202C8B0B0042FE63 /* ChatVC.swift in Sources */,
-				6B40D016204FA6BE00473734 /* CustomiseJSQMessage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,7 +439,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8SBL643TY6;
 				INFOPLIST_FILE = hikingbot/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KL.personal.hikingbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -443,7 +457,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8SBL643TY6;
 				INFOPLIST_FILE = hikingbot/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KL.personal.hikingbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";

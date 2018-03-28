@@ -9,6 +9,7 @@
 import UIKit
 import SKYKit
 import SKYKitChat
+import ApiAI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         SKYContainer.default().configAddress("https://hiking.skygeario.com/")
         SKYContainer.default().configure(withAPIKey: "0cabc555b7354c6990df1835fd161009")
+        
+        // Dialog Flow connection
+        let configuration = AIDefaultConfiguration()
+        configuration.clientAccessToken = "63b4c44f6aa742e0bdc19136ece27a78"
+        let apiai = ApiAI.shared()
+        apiai?.configuration = configuration
         
         return true
     }
