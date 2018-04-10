@@ -11,9 +11,6 @@ import SKYKit
 
 class ChatVC: UIViewController {
     
-
-    @IBOutlet var loadingView: UIActivityIndicatorView!
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
