@@ -2,7 +2,7 @@ import UIKit
 
 @IBDesignable class RoundButton: UIButton {
     
-    let customColor = UIColor.init(red: 208/255.0, green: 16/255.0, blue: 224/255.0, alpha: 1)
+    let customColor = UIColor.init(red: 42/255.0, green: 177/255.0, blue: 229/255.0, alpha: 1)
     override init(frame: CGRect) {
         super.init(frame: frame)
         sharedInit()

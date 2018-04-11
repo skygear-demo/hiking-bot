@@ -11,18 +11,19 @@ import UIKit
 import JSQMessagesViewController
 import ApiAI
 import AVFoundation
+import SKYKit
+
 
 class DLchatbotViewController: JSQMessagesViewController {
     var messages = [JSQMessage]()
-    var incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: UIColor.jsq_messageBubbleBlue())
-    var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.lightGray)
-    let welcomeMessage = "Hi, I am a bot. What can I help you? You can click the reload button to load some suggestion keywords."
+    var incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: (UIColor(displayP3Red: CGFloat(72.0/255.0), green: CGFloat(142.0/255.0), blue: CGFloat(248.0/255.0), alpha: 1.0)))
+    var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.init(red: 42/255.0, green: 177/255.0, blue: 229/255.0, alpha: 1))
+    let welcomeMessage = "Hi, I am Master Hike. What can I do for you? You can start by click suggestion button."
     let speechSynthesizer = AVSpeechSynthesizer()
     var isMute = false
     var suggestions: [String] = []
     let VIEWHEIGHT: CGFloat = 50
-    let intent = IntentHandler.self
-    
+
     // MARK: - Suggestion
     func showSuggestinoKeyword(){
         let viewWidth = self.view.bounds.width
@@ -55,14 +56,93 @@ class DLchatbotViewController: JSQMessagesViewController {
     }
     
     // MARK: - Speech to Text Function
-    func speechAndText(text: String) {
+    func speechAndText(text: String?) {
         if !isMute{
-            let speechUtterance = AVSpeechUtterance(string: text)
-            if NLP.determineLanguage(for: text) == "zh-Hant"{
-                speechUtterance.voice  = AVSpeechSynthesisVoice(language: "zh-HK") //usg chinese
+            let speechUtterance = AVSpeechUtterance(string: text!)
+            if let textToSpeech = text{
+                if NLP.determineLanguage(for: textToSpeech) == "zh-Hant"{
+                    speechUtterance.voice  = AVSpeechSynthesisVoice(language: "zh-HK") //usg chinese
+                }
+                speechSynthesizer.speak(speechUtterance)
             }
-            speechSynthesizer.speak(speechUtterance)
         }
+    }
+    
+    // MARK: - Handle intent
+    func intentHandler(response: AIResponse){
+        if let intent = response.result.metadata.intentName{
+            print(intent)
+            if (intent == "Default Fallback Intent"){
+                self.showSuggestinoKeyword()
+            }else if (intent == "weather intent" && !response.result.actionIncomplete.boolValue){
+                let date = response.result.parameters["date"] as! AIResponseParameter
+                getWeatherFromServer(date: date.stringValue, completion: { (sucess, text) in
+                    if sucess{
+                        self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: text))
+                        self.finishSendingMessage()
+                        self.speechAndText(text: text)
+                    }else{
+                        let msg = "Sorry. I can get find the weather. Please try again."
+                        self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: msg))
+                        self.finishSendingMessage()
+                        self.speechAndText(text: msg)
+                    }
+                })
+            }else if (intent == "show location - yes"){
+                let context = response.result.contexts as! [AIResponseContext]
+                guard context.count > 0 else {return}
+                let para = context[0].parameters["hike"] as! AIResponseParameter
+                if let loc = para.listValue[0].stringValue{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        let vc = MapViewController()
+                        vc.destinations = [loc]
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - Method
+    func getWeatherFromServer(date: String, completion: @escaping (_ success: Bool, _ text: String)->()) {
+        
+        let query = SKYQuery(recordType: "HikeBotDatabase", predicate: nil)
+        var result = " "
+
+        SKYContainer.default().publicCloudDatabase.perform(query) { (results, error) in
+
+            if error != nil {
+                return
+            }
+            for record in results as! [SKYRecord] {
+                print(record)
+                let  queryDate = record["Date"] as! String
+                print(queryDate)
+                print("x")
+                print(date)
+                if queryDate == date{
+                    result = record["Summary"] as! String
+                    completion(true, result)
+                }
+            }
+        }
+        
+        /* Save record
+         let todo = SKYRecord(recordType: "Weather")
+        todo.setObject("2018-04-13", forKey: "Date" as NSCopying)
+        todo.setObject("The weather on 2018-04-13. The tempeture is 24. It is good for hiking:)", forKey: "Summary" as NSCopying)
+
+        let privateDB = SKYContainer.default().privateCloudDatabase
+        privateDB.save(todo, completion: { (record, error) in
+            if error != nil {
+                print ("error saving todo: \(error)")
+                return
+            }
+            
+            print ("saved todo with record = \(record?.recordID)")
+        })*/
+        
+        completion(false, result)
     }
     
     // MARK: - Diaglog Flow Api
@@ -72,24 +152,16 @@ class DLchatbotViewController: JSQMessagesViewController {
         
         request?.setMappedCompletionBlockSuccess({ (request, response) in
             let response = response as! AIResponse
-            
+
             let textResponse = response.result.fulfillment.messages[0]["speech"] as! String
-            if textResponse == "Maybe you try to type a single key word?"{
-                self.showSuggestinoKeyword()
-            }
+            
+            // Append the resopnse message to the conversation
             self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: textResponse))
             self.finishSendingMessage()
             self.speechAndText(text: textResponse)
             
-            self.intent.processReponse(response: response, completion: { (hasNewText, text) in
-                if hasNewText{
-                    self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: text))
-                    self.finishSendingMessage()
-                    self.speechAndText(text: textResponse)
-                }else{
-                    return
-                }
-            })
+            // Handle special intent
+            self.intentHandler(response: response)
         }, failure: { (request, error) in
             print(error!)
         })
@@ -162,6 +234,11 @@ class DLchatbotViewController: JSQMessagesViewController {
         
         messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: welcomeMessage))
         
+        self.inputToolbar.contentView.leftBarButtonItem.setImage(UIImage(named: "add.png"), for: UIControlState.normal)
+        self.inputToolbar.contentView.leftBarButtonItem.setImage(UIImage(named: "add.png"), for: UIControlState.highlighted)
+        self.inputToolbar.contentView.leftBarButtonItem.image
+        self.collectionView.backgroundColor = UIColor(displayP3Red: CGFloat(239.0/255.0), green: CGFloat(242.0/255.0), blue: CGFloat(253.0/255.0), alpha: 1.0)
+        
         // Navigation item
         setupNavigationBar()
         
@@ -186,7 +263,7 @@ class DLchatbotViewController: JSQMessagesViewController {
     
     // MARK: - Navigation bar
     func setupNavigationBar() {
-        navigationItem.title = "Chat Bot"
+        navigationItem.title = "Hike Master"
         let backButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(backButtonTapped))
         navigationItem.leftBarButtonItem = backButton
         let button = UIBarButtonItem(image: UIImage(named: "mute"), style: .plain, target: self, action: #selector(muteButtonPressed))

@@ -14,8 +14,7 @@ class LoginVC: UIViewController {
     @IBOutlet var emailTxt: UITextField!
     @IBOutlet var passwordTxt: UITextField!
     @IBOutlet var loading: UIActivityIndicatorView!
-    @IBOutlet var rmbEmailSwitch: UISwitch!
-    
+
     // MARK: - Action
     
     @IBAction func loginAction(_ sender: Any) {
@@ -109,22 +108,12 @@ class LoginVC: UIViewController {
     }
     
     func saveEmail(){
-        if rmbEmailSwitch.isOn{
-            UserDefaults.standard.set(emailTxt.text!, forKey: "email")
-            UserDefaults.standard.set(true, forKey: "shouldSaveEmail")
-        }else{
-            UserDefaults.standard.set(false, forKey: "shouldSaveEmail")
-        }
+        UserDefaults.standard.set(emailTxt.text!, forKey: "email")
     }
     
     func loadSavedEmail(){
-        if UserDefaults.standard.bool(forKey: "shouldSaveEmail"){
-            rmbEmailSwitch.isOn = true
-            if let email = UserDefaults.standard.string(forKey: "email"){
-                emailTxt.text = email
-            }
-        }else{
-            rmbEmailSwitch.isOn = false
+        if let email = UserDefaults.standard.string(forKey: "email"){
+            emailTxt.text = email
         }
     }
     

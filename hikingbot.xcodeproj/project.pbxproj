@@ -8,14 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		6B2EB94E2029D42400C926C0 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2EB94D2029D42400C926C0 /* LoginVC.swift */; };
+		6B313EAD207CA81A001D2EF3 /* StepsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B313EA7207CA81A001D2EF3 /* StepsTableViewCell.xib */; };
+		6B313EAE207CA81A001D2EF3 /* StepsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B313EA8207CA81A001D2EF3 /* StepsTableViewCell.swift */; };
+		6B313EAF207CA81A001D2EF3 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B313EA9207CA81A001D2EF3 /* MapViewController.swift */; };
+		6B313EB0207CA81A001D2EF3 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B313EAA207CA81A001D2EF3 /* MapViewController.xib */; };
+		6B313EB1207CA81A001D2EF3 /* StepsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B313EAB207CA81A001D2EF3 /* StepsTableViewController.swift */; };
+		6B313EB2207CA81A001D2EF3 /* StepsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B313EAC207CA81A001D2EF3 /* StepsTableViewController.xib */; };
+		6B313EB4207CC013001D2EF3 /* mapicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B313EB3207CC013001D2EF3 /* mapicon.png */; };
+		6B313EB6207E43F6001D2EF3 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B313EB5207E43F5001D2EF3 /* add.png */; };
 		6B681D4F2067E2B30035603A /* DLchatbotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D4E2067E2B20035603A /* DLchatbotViewController.swift */; };
 		6B681D512067E33C0035603A /* NLP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D502067E33B0035603A /* NLP.swift */; };
 		6B681D532067E41D0035603A /* GoogleTranslateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D522067E41D0035603A /* GoogleTranslateAPI.swift */; };
 		6B681D552067E6870035603A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D542067E6870035603A /* RoundButton.swift */; };
-		6B9B4651202B5D9E0042FE63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B4650202B5D9E0042FE63 /* ViewController.swift */; };
 		6B9B4653202C8B0B0042FE63 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B4652202C8B0B0042FE63 /* ChatVC.swift */; };
 		6BBB67B3792066078539B736 /* Pods_hikingbot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D9226FB10D826B5660E0BA /* Pods_hikingbot.framework */; };
-		6BCF66B0206B240100A50424 /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF66AF206B240100A50424 /* IntentHandler.swift */; };
 		6BF38A7320296B780063BEB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38A7220296B780063BEB8 /* AppDelegate.swift */; };
 		6BF38A7820296B780063BEB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF38A7620296B780063BEB8 /* Main.storyboard */; };
 		6BF38A7A20296B780063BEB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BF38A7920296B780063BEB8 /* Assets.xcassets */; };
@@ -27,13 +33,19 @@
 		12D9226FB10D826B5660E0BA /* Pods_hikingbot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_hikingbot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		32E64464941697EEE0F0BB52 /* Pods-hikingbot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hikingbot.release.xcconfig"; path = "Pods/Target Support Files/Pods-hikingbot/Pods-hikingbot.release.xcconfig"; sourceTree = "<group>"; };
 		6B2EB94D2029D42400C926C0 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		6B313EA7207CA81A001D2EF3 /* StepsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTableViewCell.xib; sourceTree = "<group>"; };
+		6B313EA8207CA81A001D2EF3 /* StepsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTableViewCell.swift; sourceTree = "<group>"; };
+		6B313EA9207CA81A001D2EF3 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		6B313EAA207CA81A001D2EF3 /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		6B313EAB207CA81A001D2EF3 /* StepsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StepsTableViewController.swift; sourceTree = "<group>"; };
+		6B313EAC207CA81A001D2EF3 /* StepsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StepsTableViewController.xib; sourceTree = "<group>"; };
+		6B313EB3207CC013001D2EF3 /* mapicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapicon.png; sourceTree = "<group>"; };
+		6B313EB5207E43F5001D2EF3 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
 		6B681D4E2067E2B20035603A /* DLchatbotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DLchatbotViewController.swift; sourceTree = "<group>"; };
 		6B681D502067E33B0035603A /* NLP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NLP.swift; sourceTree = "<group>"; };
 		6B681D522067E41D0035603A /* GoogleTranslateAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleTranslateAPI.swift; sourceTree = "<group>"; };
 		6B681D542067E6870035603A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		6B9B4650202B5D9E0042FE63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6B9B4652202C8B0B0042FE63 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
-		6BCF66AF206B240100A50424 /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		6BF38A6F20296B780063BEB8 /* hikingbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hikingbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF38A7220296B780063BEB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BF38A7720296B780063BEB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,7 +84,6 @@
 				6B681D542067E6870035603A /* RoundButton.swift */,
 				6B681D502067E33B0035603A /* NLP.swift */,
 				6B681D4E2067E2B20035603A /* DLchatbotViewController.swift */,
-				6BCF66AF206B240100A50424 /* IntentHandler.swift */,
 			);
 			path = JSQMessage;
 			sourceTree = "<group>";
@@ -80,18 +91,33 @@
 		6B2EB94B2029D35100C926C0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6B313EB3207CC013001D2EF3 /* mapicon.png */,
+				6B313EB5207E43F5001D2EF3 /* add.png */,
 				6BFF05C9206159A2002A0319 /* avatar_user.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		6B2EB94C2029D40700C926C0 /* View */ = {
+		6B2EB94C2029D40700C926C0 /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				6B9B4652202C8B0B0042FE63 /* ChatVC.swift */,
 				6B2EB94D2029D42400C926C0 /* LoginVC.swift */,
 			);
-			path = View;
+			path = Main;
+			sourceTree = "<group>";
+		};
+		6B313EA6207CA81A001D2EF3 /* Map View */ = {
+			isa = PBXGroup;
+			children = (
+				6B313EA7207CA81A001D2EF3 /* StepsTableViewCell.xib */,
+				6B313EA8207CA81A001D2EF3 /* StepsTableViewCell.swift */,
+				6B313EA9207CA81A001D2EF3 /* MapViewController.swift */,
+				6B313EAA207CA81A001D2EF3 /* MapViewController.xib */,
+				6B313EAB207CA81A001D2EF3 /* StepsTableViewController.swift */,
+				6B313EAC207CA81A001D2EF3 /* StepsTableViewController.xib */,
+			);
+			path = "Map View";
 			sourceTree = "<group>";
 		};
 		6BF38A6620296B780063BEB8 = {
@@ -115,11 +141,11 @@
 		6BF38A7120296B780063BEB8 /* hikingbot */ = {
 			isa = PBXGroup;
 			children = (
-				6B2EB94C2029D40700C926C0 /* View */,
+				6B2EB94C2029D40700C926C0 /* Main */,
 				6B2EB94B2029D35100C926C0 /* Resources */,
+				6B313EA6207CA81A001D2EF3 /* Map View */,
 				6B17C71F2045012200A0DB3E /* JSQMessage */,
 				6BF38A7220296B780063BEB8 /* AppDelegate.swift */,
-				6B9B4650202B5D9E0042FE63 /* ViewController.swift */,
 				6BF38A7620296B780063BEB8 /* Main.storyboard */,
 				6BF38A7920296B780063BEB8 /* Assets.xcassets */,
 				6BF38A7B20296B780063BEB8 /* LaunchScreen.storyboard */,
@@ -166,7 +192,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = KL;
 				TargetAttributes = {
 					6BF38A6E20296B780063BEB8 = {
@@ -199,10 +225,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B313EB6207E43F6001D2EF3 /* add.png in Resources */,
 				6BFF05CA206159A2002A0319 /* avatar_user.png in Resources */,
+				6B313EB0207CA81A001D2EF3 /* MapViewController.xib in Resources */,
 				6BF38A7D20296B780063BEB8 /* LaunchScreen.storyboard in Resources */,
 				6BF38A7A20296B780063BEB8 /* Assets.xcassets in Resources */,
+				6B313EAD207CA81A001D2EF3 /* StepsTableViewCell.xib in Resources */,
+				6B313EB4207CC013001D2EF3 /* mapicon.png in Resources */,
 				6BF38A7820296B780063BEB8 /* Main.storyboard in Resources */,
+				6B313EB2207CA81A001D2EF3 /* StepsTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,13 +315,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B313EAF207CA81A001D2EF3 /* MapViewController.swift in Sources */,
 				6B681D552067E6870035603A /* RoundButton.swift in Sources */,
 				6B681D532067E41D0035603A /* GoogleTranslateAPI.swift in Sources */,
 				6BF38A7320296B780063BEB8 /* AppDelegate.swift in Sources */,
 				6B681D512067E33C0035603A /* NLP.swift in Sources */,
 				6B2EB94E2029D42400C926C0 /* LoginVC.swift in Sources */,
-				6BCF66B0206B240100A50424 /* IntentHandler.swift in Sources */,
-				6B9B4651202B5D9E0042FE63 /* ViewController.swift in Sources */,
+				6B313EAE207CA81A001D2EF3 /* StepsTableViewCell.swift in Sources */,
+				6B313EB1207CA81A001D2EF3 /* StepsTableViewController.swift in Sources */,
 				6B681D4F2067E2B30035603A /* DLchatbotViewController.swift in Sources */,
 				6B9B4653202C8B0B0042FE63 /* ChatVC.swift in Sources */,
 			);
@@ -332,6 +364,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -339,6 +372,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -389,6 +423,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -396,6 +431,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -433,13 +469,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8SBL643TY6;
 				INFOPLIST_FILE = hikingbot/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KL.personal.hikingbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -451,13 +487,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8SBL643TY6;
 				INFOPLIST_FILE = hikingbot/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KL.personal.hikingbot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
