@@ -21,6 +21,7 @@ struct textEntity{
 class NLP{
     
     static let keyword = ["weather", "suggestion", "beginner", "Lamma Island"]
+    static let hikes = ["Sunset Peak", "Sharp Island", "Wilson Trail", "Lamma Island", "Peak Circle Walk"]
     static let tagger = NSLinguisticTagger(tagSchemes:[.tokenType, .language, .lexicalClass, .nameType, .lemma], options: 0)
     static let options: NSLinguisticTagger.Options = [.omitPunctuation, .omitWhitespace, .joinNames]
     
@@ -97,6 +98,19 @@ class NLP{
     static func getThreeRandomNonRepeatedKeyword() -> [String]{
         var result: [String] = []
         var tmp = keyword
+        var ran = 0
+        for _ in 1...3{
+            ran = Int(arc4random_uniform(UInt32(tmp.count)))
+            result.append(tmp[ran])
+            tmp.remove(at: ran)
+        }
+        
+        return result
+    }
+    
+    static func getThreeRandomHikeKeyword() -> [String]{
+        var result: [String] = []
+        var tmp = hikes
         var ran = 0
         for _ in 1...3{
             ran = Int(arc4random_uniform(UInt32(tmp.count)))

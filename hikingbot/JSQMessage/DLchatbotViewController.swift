@@ -38,6 +38,7 @@ class DLchatbotViewController: JSQMessagesViewController {
         for suggestion in suggestions{
             let button = RoundButton(frame: CGRect(x: tmpX, y: 10, width: buttonWidth, height: buttonHeight))
             button.setTitle(suggestion, for: .normal)
+            button.titleLabel?.adjustsFontSizeToFitWidth = true
             button.addTarget(self, action:#selector(sendSuggestionChat), for: .touchUpInside)
             selectableView.addSubview(button)
             tmpX += 10 + buttonWidth
@@ -79,25 +80,21 @@ class DLchatbotViewController: JSQMessagesViewController {
                 getWeatherFromServer(date: date.stringValue, completion: { (sucess, text) in
                     if sucess{
                         self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: text))
-                        self.finishSendingMessage()
+                        self.finishReceivingMessage()
                         self.speechAndText(text: text)
                     }else{
                         let msg = "Sorry. I can get find the weather. Please try again."
                         self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: msg))
-                        self.finishSendingMessage()
+                        self.finishReceivingMessage()
                         self.speechAndText(text: msg)
                     }
                 })
-            }else if (intent == "show location - yes"){
-                let context = response.result.contexts as! [AIResponseContext]
-                guard context.count > 0 else {return}
-                let para = context[0].parameters["hike"] as! AIResponseParameter
-                if let loc = para.listValue[0].stringValue{
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        let vc = MapViewController()
-                        vc.destinations = [loc]
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    }
+            }else if (intent == "Show hike location intent" && !response.result.actionIncomplete.boolValue){
+                let loc = response.result.parameters["Hike"] as! AIResponseParameter
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    let vc = MapViewController()
+                    vc.destinations = [loc.stringValue]
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
         }
@@ -106,43 +103,30 @@ class DLchatbotViewController: JSQMessagesViewController {
     // MARK: - Method
     func getWeatherFromServer(date: String, completion: @escaping (_ success: Bool, _ text: String)->()) {
         
-        let query = SKYQuery(recordType: "HikeBotDatabase", predicate: nil)
+        let inPredicate = NSPredicate(format: "Date IN %@", [date])
+        let query = SKYQuery(recordType: "Weather", predicate: inPredicate)
         var result = " "
-
+        print(date)
+        
         SKYContainer.default().publicCloudDatabase.perform(query) { (results, error) in
 
             if error != nil {
+                completion(false, result)
                 return
             }
+            print("ds")
             for record in results as! [SKYRecord] {
-                print(record)
-                let  queryDate = record["Date"] as! String
+                
+                let queryDate = record["Date"] as! String
                 print(queryDate)
-                print("x")
-                print(date)
                 if queryDate == date{
                     result = record["Summary"] as! String
                     completion(true, result)
+                    return
                 }
             }
+            completion(false, result)
         }
-        
-        /* Save record
-         let todo = SKYRecord(recordType: "Weather")
-        todo.setObject("2018-04-13", forKey: "Date" as NSCopying)
-        todo.setObject("The weather on 2018-04-13. The tempeture is 24. It is good for hiking:)", forKey: "Summary" as NSCopying)
-
-        let privateDB = SKYContainer.default().privateCloudDatabase
-        privateDB.save(todo, completion: { (record, error) in
-            if error != nil {
-                print ("error saving todo: \(error)")
-                return
-            }
-            
-            print ("saved todo with record = \(record?.recordID)")
-        })*/
-        
-        completion(false, result)
     }
     
     // MARK: - Diaglog Flow Api
@@ -157,7 +141,7 @@ class DLchatbotViewController: JSQMessagesViewController {
             
             // Append the resopnse message to the conversation
             self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: textResponse))
-            self.finishSendingMessage()
+            self.finishReceivingMessage()
             self.speechAndText(text: textResponse)
             
             // Handle special intent
@@ -215,10 +199,17 @@ class DLchatbotViewController: JSQMessagesViewController {
             self.scrollToBottom(animated: true)
         }
         
+        let hikeAction = UIAlertAction(title: "Hike Suggestion", style: .default) { (action) in
+            self.suggestions = NLP.getThreeRandomHikeKeyword()
+            self.showSuggestinoKeyword()
+            self.scrollToBottom(animated: true)
+        }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){ (action) in
             self.scrollToBottom(animated: true)
         }
         sheet.addAction(translateAction)
+        sheet.addAction(hikeAction)
         sheet.addAction(suggestAction)
         sheet.addAction(cancelAction)
         self.present(sheet, animated: true, completion: nil)
