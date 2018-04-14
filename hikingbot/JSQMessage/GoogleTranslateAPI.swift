@@ -27,6 +27,7 @@ class GoogleTranslateAPI {
         Alamofire.request("https://translation.googleapis.com/language/translate/v2", parameters: urlParams)
             .validate()
             .responseJSON { (response) in
+                print(response)
                 if let json = response.result.value as? [String: Any] {
                     if let data = json["data"] as? [String: Any] {
                         if let translations = data["translations"] as? [[String:Any]] {

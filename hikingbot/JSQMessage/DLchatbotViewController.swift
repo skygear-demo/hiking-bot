@@ -73,6 +73,40 @@ class DLchatbotViewController: JSQMessagesViewController {
     func intentHandler(response: AIResponse){
         if let intent = response.result.metadata.intentName{
             print(intent)
+            
+            let textResponse = response.result.fulfillment.messages[0]["speech"] as! String
+            if (intent.hasPrefix("show route -")){
+                let tokens = textResponse.split(separator: ",")
+                var text = "You can start from "
+                var loc: [String] = []
+                var i = 0
+                for token in tokens{
+                    loc.append(String(token))
+                    i += 1
+                    text += token
+                    if i < tokens.count{
+                        text += " -> "
+                    }
+                }
+                text += ". I will show it on the map soon."
+                self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: text))
+                self.finishReceivingMessage()
+                self.speechAndText(text: text)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    let vc = MapViewController()
+                    vc.destinations = loc
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                print(loc)
+                print("done")
+                return
+            }
+            
+            // Append the resopnse message to the conversation
+            self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: textResponse))
+            self.finishReceivingMessage()
+            self.speechAndText(text: textResponse)
+            
             if (intent == "Default Fallback Intent"){
                 self.showSuggestinoKeyword()
             }else if (intent == "weather intent" && !response.result.actionIncomplete.boolValue){
@@ -136,13 +170,6 @@ class DLchatbotViewController: JSQMessagesViewController {
         
         request?.setMappedCompletionBlockSuccess({ (request, response) in
             let response = response as! AIResponse
-
-            let textResponse = response.result.fulfillment.messages[0]["speech"] as! String
-            
-            // Append the resopnse message to the conversation
-            self.messages.append(JSQMessage(senderId: "bot", displayName: "bot", text: textResponse))
-            self.finishReceivingMessage()
-            self.speechAndText(text: textResponse)
             
             // Handle special intent
             self.intentHandler(response: response)
