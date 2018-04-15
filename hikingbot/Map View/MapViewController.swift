@@ -19,7 +19,7 @@ struct orderedRoutes{
   var route: MKRoute
 }
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController{
   
   @IBOutlet var mapView: MKMapView!
   @IBOutlet var segmentedControl: UISegmentedControl!
@@ -93,7 +93,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
   private func displayMultipleAnnotate(){
     var order = 0
     for place in destinations{
-      let currentOrder = order  
+      let currentOrder = order
       let geoCoder = CLGeocoder()
       geoCoder.geocodeAddressString(place, completionHandler: { placemarks, error in
         if let error = error {
@@ -154,8 +154,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
   }
   
-  // MARK: - MKMapViewDelegate methods
+}
+
+extension MapViewController: MKMapViewDelegate{
   
+  // MARK: - MKMapViewDelegate methods
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     let identifier = "MyPin"
     
@@ -232,5 +235,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     vc.routeSteps = steps
     self.navigationController?.pushViewController(vc, animated: true)
   }
-  
 }
+
+

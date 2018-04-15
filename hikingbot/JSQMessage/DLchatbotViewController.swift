@@ -1,31 +1,33 @@
 //
-//  ChatViewController.swift
-//  SwiftExample
+//  DLchatbotViewController.swift
+//  KLPlatform
 //
-//  Created by Dan Leonard on 5/11/16.
-//  Copyright © 2016 MacMeDan. All rights reserved.
+//  Created by KL on 10/2/2018.
+//  Copyright © 2018 KL. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import JSQMessagesViewController
 import ApiAI
-import AVFoundation
 import SKYKit
 
-
 class DLchatbotViewController: JSQMessagesViewController {
-  var messages = [JSQMessage]()
-  var incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: (UIColor(displayP3Red: CGFloat(72.0/255.0), green: CGFloat(142.0/255.0), blue: CGFloat(248.0/255.0), alpha: 1.0)))
-  var outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.init(red: 42/255.0, green: 177/255.0, blue: 229/255.0, alpha: 1))
+  
+  // MARK: - Constant
+  let incomingBubble = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImage(with: (UIColor(displayP3Red: CGFloat(72.0/255.0), green: CGFloat(142.0/255.0), blue: CGFloat(248.0/255.0), alpha: 1.0)))
+  let outgoingBubble = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImage(with: UIColor.init(red: 42/255.0, green: 177/255.0, blue: 229/255.0, alpha: 1))
   let welcomeMessage = "Hi, I am Master Hike. What can I do for you? You can start by click suggestion button."
+  let VIEWHEIGHT: CGFloat = 50
   let speechSynthesizer = AVSpeechSynthesizer()
+  
+  // MARK: - Variable
+  var messages = [JSQMessage]()
   var isMute = false
   var suggestions: [String] = []
-  let VIEWHEIGHT: CGFloat = 50
+
   
-  // MARK: - Suggestion
-  func showSuggestinoKeyword(){
+  // MARK: - Show suggestion method
+  private func showSuggestinoKeyword(){
     let viewWidth = self.view.bounds.width
     let buttonHeight: CGFloat = VIEWHEIGHT - 20
     let buttonWidth = (self.view.bounds.width - 40)/3
@@ -47,7 +49,7 @@ class DLchatbotViewController: JSQMessagesViewController {
     self.view.addSubview(selectableView)
   }
   
-  @objc func sendSuggestionChat(sender:UIButton!) {
+  @objc private func sendSuggestionChat(sender:UIButton!) {
     view.viewWithTag(100)?.removeFromSuperview()
     let body = sender.titleLabel?.text
     let message = JSQMessage(senderId: senderId, displayName: senderDisplayName, text: body)
@@ -56,8 +58,8 @@ class DLchatbotViewController: JSQMessagesViewController {
     passMessageToBot(body: body!)
   }
   
-  // MARK: - Speech to Text Function
-  func speechAndText(text: String?) {
+  // MARK: - Speech to text method
+  private func speechAndText(text: String?) {
     if !isMute{
       let speechUtterance = AVSpeechUtterance(string: text!)
       if let textToSpeech = text{
@@ -69,8 +71,8 @@ class DLchatbotViewController: JSQMessagesViewController {
     }
   }
   
-  // MARK: - Handle intent
-  func intentHandler(response: AIResponse){
+  // MARK: - Intent handler
+  private func intentHandler(response: AIResponse){
     if let intent = response.result.metadata.intentName{
       print(intent)
       
@@ -134,7 +136,7 @@ class DLchatbotViewController: JSQMessagesViewController {
     }
   }
   
-  // MARK: - Method
+  // MARK: - Skygear method
   func getWeatherFromServer(date: String, completion: @escaping (_ success: Bool, _ text: String)->()) {
     
     let inPredicate = NSPredicate(format: "Date IN %@", [date])
@@ -180,7 +182,7 @@ class DLchatbotViewController: JSQMessagesViewController {
     ApiAI.shared().enqueue(request)
   }
   
-  // MARK: - Delegate with textField & Scrolling
+  // MARK: - Text view delegate
   override func textViewDidBeginEditing(_ textView: UITextView) {
     self.scrollToBottom(animated: true)
     if let subview = view.viewWithTag(100){

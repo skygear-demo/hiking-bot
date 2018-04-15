@@ -38,9 +38,7 @@ class GoogleTranslateAPI {
             }
           }
         }
-        
     }
-    
   }
   
 }
