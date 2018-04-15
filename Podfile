@@ -8,5 +8,6 @@ target 'hikingbot' do
   pod 'JSQMessagesViewController'
   pod 'ApiAI'
   pod 'Alamofire'
+  pod 'ARCL'
 
 end

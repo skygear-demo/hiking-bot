@@ -21,6 +21,17 @@
 		6B681D532067E41D0035603A /* GoogleTranslateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D522067E41D0035603A /* GoogleTranslateAPI.swift */; };
 		6B681D552067E6870035603A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B681D542067E6870035603A /* RoundButton.swift */; };
 		6B9B4653202C8B0B0042FE63 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B4652202C8B0B0042FE63 /* ChatVC.swift */; };
+		6B9DE72E20833F840024CA41 /* SCNVector3+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72420833F840024CA41 /* SCNVector3+Extensions.swift */; };
+		6B9DE72F20833F840024CA41 /* SceneLocationEstimate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72520833F840024CA41 /* SceneLocationEstimate.swift */; };
+		6B9DE73020833F840024CA41 /* SceneLocationEstimate+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72620833F840024CA41 /* SceneLocationEstimate+Extensions.swift */; };
+		6B9DE73120833F840024CA41 /* FloatingPoint+Radians.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72720833F840024CA41 /* FloatingPoint+Radians.swift */; };
+		6B9DE73220833F840024CA41 /* LocationNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72820833F840024CA41 /* LocationNode.swift */; };
+		6B9DE73320833F840024CA41 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72920833F840024CA41 /* CGPoint+Extensions.swift */; };
+		6B9DE73420833F840024CA41 /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72A20833F840024CA41 /* CLLocation+Extensions.swift */; };
+		6B9DE73520833F840024CA41 /* SceneLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72B20833F840024CA41 /* SceneLocationView.swift */; };
+		6B9DE73620833F840024CA41 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72C20833F840024CA41 /* LocationManager.swift */; };
+		6B9DE73720833F840024CA41 /* SCNNode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE72D20833F840024CA41 /* SCNNode+Extensions.swift */; };
+		6B9DE73920833FCB0024CA41 /* HikingARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9DE73820833FCB0024CA41 /* HikingARViewController.swift */; };
 		6BBB67B3792066078539B736 /* Pods_hikingbot.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12D9226FB10D826B5660E0BA /* Pods_hikingbot.framework */; };
 		6BF38A7320296B780063BEB8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF38A7220296B780063BEB8 /* AppDelegate.swift */; };
 		6BF38A7820296B780063BEB8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BF38A7620296B780063BEB8 /* Main.storyboard */; };
@@ -46,6 +57,17 @@
 		6B681D522067E41D0035603A /* GoogleTranslateAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoogleTranslateAPI.swift; sourceTree = "<group>"; };
 		6B681D542067E6870035603A /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		6B9B4652202C8B0B0042FE63 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		6B9DE72420833F840024CA41 /* SCNVector3+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNVector3+Extensions.swift"; sourceTree = "<group>"; };
+		6B9DE72520833F840024CA41 /* SceneLocationEstimate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneLocationEstimate.swift; sourceTree = "<group>"; };
+		6B9DE72620833F840024CA41 /* SceneLocationEstimate+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SceneLocationEstimate+Extensions.swift"; sourceTree = "<group>"; };
+		6B9DE72720833F840024CA41 /* FloatingPoint+Radians.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FloatingPoint+Radians.swift"; sourceTree = "<group>"; };
+		6B9DE72820833F840024CA41 /* LocationNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationNode.swift; sourceTree = "<group>"; };
+		6B9DE72920833F840024CA41 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
+		6B9DE72A20833F840024CA41 /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
+		6B9DE72B20833F840024CA41 /* SceneLocationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneLocationView.swift; sourceTree = "<group>"; };
+		6B9DE72C20833F840024CA41 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		6B9DE72D20833F840024CA41 /* SCNNode+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SCNNode+Extensions.swift"; sourceTree = "<group>"; };
+		6B9DE73820833FCB0024CA41 /* HikingARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HikingARViewController.swift; sourceTree = "<group>"; };
 		6BF38A6F20296B780063BEB8 /* hikingbot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hikingbot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BF38A7220296B780063BEB8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BF38A7720296B780063BEB8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -123,8 +145,27 @@
 		6B9DE6EE20831E910024CA41 /* AR */ = {
 			isa = PBXGroup;
 			children = (
+				6B9DE73820833FCB0024CA41 /* HikingARViewController.swift */,
+				6B9DE72320833F840024CA41 /* Source */,
 			);
 			path = AR;
+			sourceTree = "<group>";
+		};
+		6B9DE72320833F840024CA41 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				6B9DE72420833F840024CA41 /* SCNVector3+Extensions.swift */,
+				6B9DE72520833F840024CA41 /* SceneLocationEstimate.swift */,
+				6B9DE72620833F840024CA41 /* SceneLocationEstimate+Extensions.swift */,
+				6B9DE72720833F840024CA41 /* FloatingPoint+Radians.swift */,
+				6B9DE72820833F840024CA41 /* LocationNode.swift */,
+				6B9DE72920833F840024CA41 /* CGPoint+Extensions.swift */,
+				6B9DE72A20833F840024CA41 /* CLLocation+Extensions.swift */,
+				6B9DE72B20833F840024CA41 /* SceneLocationView.swift */,
+				6B9DE72C20833F840024CA41 /* LocationManager.swift */,
+				6B9DE72D20833F840024CA41 /* SCNNode+Extensions.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		6BF38A6620296B780063BEB8 = {
@@ -182,7 +223,6 @@
 				6BF38A6C20296B780063BEB8 /* Frameworks */,
 				6BF38A6D20296B780063BEB8 /* Resources */,
 				0EC99B1BC3CFF869564AB539 /* [CP] Embed Pods Frameworks */,
-				AC2DCBBE8ECC91848FEA129B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -255,6 +295,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-hikingbot/Pods-hikingbot-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ARCL/ARCL.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ApiAI/ApiAI.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
@@ -266,6 +307,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARCL.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ApiAI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
@@ -298,24 +340,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AC2DCBBE8ECC91848FEA129B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-hikingbot/Pods-hikingbot-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/SKYKitChat/SKYKitChatUI.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SKYKitChatUI.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hikingbot/Pods-hikingbot-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -325,14 +349,25 @@
 			files = (
 				6B313EAF207CA81A001D2EF3 /* MapViewController.swift in Sources */,
 				6B681D552067E6870035603A /* RoundButton.swift in Sources */,
+				6B9DE73320833F840024CA41 /* CGPoint+Extensions.swift in Sources */,
 				6B681D532067E41D0035603A /* GoogleTranslateAPI.swift in Sources */,
 				6BF38A7320296B780063BEB8 /* AppDelegate.swift in Sources */,
 				6B681D512067E33C0035603A /* NLP.swift in Sources */,
+				6B9DE73920833FCB0024CA41 /* HikingARViewController.swift in Sources */,
+				6B9DE73420833F840024CA41 /* CLLocation+Extensions.swift in Sources */,
 				6B2EB94E2029D42400C926C0 /* LoginVC.swift in Sources */,
+				6B9DE73720833F840024CA41 /* SCNNode+Extensions.swift in Sources */,
 				6B313EAE207CA81A001D2EF3 /* StepsTableViewCell.swift in Sources */,
 				6B313EB1207CA81A001D2EF3 /* StepsTableViewController.swift in Sources */,
 				6B681D4F2067E2B30035603A /* DLchatbotViewController.swift in Sources */,
+				6B9DE73020833F840024CA41 /* SceneLocationEstimate+Extensions.swift in Sources */,
+				6B9DE72F20833F840024CA41 /* SceneLocationEstimate.swift in Sources */,
 				6B9B4653202C8B0B0042FE63 /* ChatVC.swift in Sources */,
+				6B9DE73520833F840024CA41 /* SceneLocationView.swift in Sources */,
+				6B9DE73220833F840024CA41 /* LocationNode.swift in Sources */,
+				6B9DE72E20833F840024CA41 /* SCNVector3+Extensions.swift in Sources */,
+				6B9DE73620833F840024CA41 /* LocationManager.swift in Sources */,
+				6B9DE73120833F840024CA41 /* FloatingPoint+Radians.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

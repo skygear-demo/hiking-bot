@@ -9,7 +9,24 @@
 import UIKit
 import SKYKit
 
-class ChatVC: UIViewController {
+class ChatVC: UIViewController, UITextFieldDelegate{
+  
+  @IBOutlet var destination: UITextField!
+  
+  func textFieldDidBeginEditing(_ textField: UITextField) {
+    self.view.bounds.origin.y = 250
+  }
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    self.view.bounds.origin.y = 0
+    self.view.endEditing(true)
+    return true
+  }
+  
+  override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    self.view.bounds.origin.y = 0
+    self.view.endEditing(true)
+  }
   
   // MARK: - Lifecycle
   override func viewDidLoad() {
@@ -17,6 +34,7 @@ class ChatVC: UIViewController {
     super.viewDidLoad()
     
     self.navigationController?.isNavigationBarHidden = true
+    self.destination.delegate = self
   }
   
   // MARK: - Actions
@@ -28,6 +46,16 @@ class ChatVC: UIViewController {
       }
       self.dismiss(animated: true, completion: nil)
     }
+  }
+  
+  @IBAction func createARView(_ sender: Any) {
+    if let loc = destination.text{
+      let ARView = HikingARViewController()
+      ARView.destination = loc
+      let arViewNavigationController = UINavigationController(rootViewController: ARView)
+      self.present(arViewNavigationController, animated: true, completion: nil)
+    }
+    
   }
   
   @IBAction func createChat(_ sender: Any) {
