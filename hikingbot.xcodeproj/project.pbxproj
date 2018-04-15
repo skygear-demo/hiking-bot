@@ -110,14 +110,21 @@
 		6B313EA6207CA81A001D2EF3 /* Map View */ = {
 			isa = PBXGroup;
 			children = (
-				6B313EA7207CA81A001D2EF3 /* StepsTableViewCell.xib */,
 				6B313EA8207CA81A001D2EF3 /* StepsTableViewCell.swift */,
+				6B313EA7207CA81A001D2EF3 /* StepsTableViewCell.xib */,
 				6B313EA9207CA81A001D2EF3 /* MapViewController.swift */,
 				6B313EAA207CA81A001D2EF3 /* MapViewController.xib */,
 				6B313EAB207CA81A001D2EF3 /* StepsTableViewController.swift */,
 				6B313EAC207CA81A001D2EF3 /* StepsTableViewController.xib */,
 			);
 			path = "Map View";
+			sourceTree = "<group>";
+		};
+		6B9DE6EE20831E910024CA41 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AR;
 			sourceTree = "<group>";
 		};
 		6BF38A6620296B780063BEB8 = {
@@ -145,6 +152,7 @@
 				6B2EB94B2029D35100C926C0 /* Resources */,
 				6B313EA6207CA81A001D2EF3 /* Map View */,
 				6B17C71F2045012200A0DB3E /* JSQMessage */,
+				6B9DE6EE20831E910024CA41 /* AR */,
 				6BF38A7220296B780063BEB8 /* AppDelegate.swift */,
 				6BF38A7620296B780063BEB8 /* Main.storyboard */,
 				6BF38A7920296B780063BEB8 /* Assets.xcassets */,
