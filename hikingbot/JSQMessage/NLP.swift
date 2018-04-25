@@ -20,8 +20,8 @@ struct textEntity{
 
 class NLP{
   
-  static let keyword = ["weather", "suggestion", "beginner", "Lamma Island"]
-  static let hikes = ["Sunset Peak", "Sharp Island", "Wilson Trail", "Lamma Island", "Peak Circle Walk"]
+  static let keyword = ["weather", "#route-lammaisland", "#route-taitam", "Lamma Island", "#route-wanchai"]
+  static let hikes = ["Wan chai", "Sunset Peak", "Sharp Island", "Wilson Trail", "Lamma Island", "Peak Circle Walk"]
   static let tagger = NSLinguisticTagger(tagSchemes:[.tokenType, .language, .lexicalClass, .nameType, .lemma], options: 0)
   static let options: NSLinguisticTagger.Options = [.omitPunctuation, .omitWhitespace, .joinNames]
   

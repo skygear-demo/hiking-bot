@@ -139,8 +139,8 @@ class DLchatbotViewController: JSQMessagesViewController {
   // MARK: - Skygear method
   func getWeatherFromServer(date: String, completion: @escaping (_ success: Bool, _ text: String)->()) {
     
-    let inPredicate = NSPredicate(format: "Date IN %@", [date])
-    let query = SKYQuery(recordType: "Weather", predicate: inPredicate)
+    let inPredicate = NSPredicate(format: "date IN %@", [date])
+    let query = SKYQuery(recordType: "TempWeather", predicate: inPredicate)
     var result = " "
     print(date)
     
@@ -150,13 +150,13 @@ class DLchatbotViewController: JSQMessagesViewController {
         completion(false, result)
         return
       }
-      print("ds")
+      print("here")
       for record in results as! [SKYRecord] {
-        
-        let queryDate = record["Date"] as! String
+        print(record)
+        let queryDate = record["date"] as! String
         print(queryDate)
         if queryDate == date{
-          result = record["Summary"] as! String
+          result = record["summary"] as! String
           completion(true, result)
           return
         }

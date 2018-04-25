@@ -1,14 +1,15 @@
 {
-    "name": "hiking",
-    "version": "1.0.0",
-    "description": "Describe your project here.",
-    "main": "index.js",
-    "dependencies": {
-        "skygear": "^1.3.0",
-        "commander": "^2.11.0",
-	    "csv-parse": "^1.2.4",
-	    "hongkong-weather": "^1.0.0",
-	    "request": "^2.85.0",
-	    "yargs": "^11.0.0"
-    }
+  "name": "hiking",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Ng <david.ng@oursky.com> (http://www.oursky.com/)",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.85.0",
+    "xml2js": "^0.4.19"
+  }
 }
